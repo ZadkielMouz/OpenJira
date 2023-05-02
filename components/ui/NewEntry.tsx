@@ -57,7 +57,7 @@ export const NewEntry = () => {
                                     variant='text'
                                     onMouseDown={onCancel}
                                 >
-                                    Cancelar
+                                    Cancel
                                 </Button>
                                 <Button
                                     type='button'
