@@ -10,7 +10,6 @@ export const NewEntry = () => {
     const { addNewEntry } = useContext( EntriesContext );
     const { isAddingEntry, setIsAddingEntry } = useContext( UIContext )
 
-    // const [isAdding, setIsAdding] = useState(false);
     const [touched, setTouched] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
@@ -19,7 +18,6 @@ export const NewEntry = () => {
     }
 
     const onSave = () => { 
-        console.log('guardando')
         if ( inputValue.length === 0 ) return;
         
         addNewEntry( inputValue );
@@ -29,6 +27,7 @@ export const NewEntry = () => {
     }
 
     const onCancel = () => {
+        setInputValue('');
         setIsAddingEntry(false);
         setTouched(false);
     }
@@ -47,7 +46,7 @@ export const NewEntry = () => {
                                 autoFocus
                                 multiline
                                 label='New Entry'
-                                helperText={ touched && inputValue.length <= 0 && 'Ingrese un valor' }
+                                helperText={ touched && inputValue.length <= 0 && 'Enter a value' }
                                 value={ inputValue }
                                 error={ touched && inputValue.length <= 0 }
                                 onChange={ onInputChange }
@@ -67,7 +66,7 @@ export const NewEntry = () => {
                                     startIcon={<SaveOutlinedIcon />}
                                     onClick={ onSave }
                                 >
-                                    Guardar
+                                    Save
                                 </Button>
                             </Box>
                         </>

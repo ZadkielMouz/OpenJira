@@ -46,7 +46,7 @@ export const EntryList = ({status}: Props) => {
                 
             >
 
-                {/* !TODO: cambiará dependiendo de si estoy haciendo un drag o no */}
+                {/* This will change depending if I am dragging or not */}
                 <List sx={{ opacity: isDragging ? 0.2 : 1, transition: 'all .3s' }}>
                     {
                         entriesByStatus.map( entry => (

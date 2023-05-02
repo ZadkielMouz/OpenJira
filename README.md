@@ -13,6 +13,20 @@ docker-compose up -d
 mongodb://localhost:27017/entriesdb
 ```
 
+## Install Node modules and start development server
+
+* First
+
+```
+yarn
+or
+yarn install
+```
+* Then
+```
+yarn dev
+```
+
 ## ENV Variables
 
 Rename the `.env.template` file to `env` and fill the variables.

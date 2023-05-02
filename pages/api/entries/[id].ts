@@ -21,9 +21,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
         
         case 'GET':
             return getEntry( req, res );
+        
+        case 'DELETE':
+            return deleteEntry( req, res );
     
         default:
-            return res.status(400).json({ message: 'Method not valid' })
+            return res.status(400).json({ message: 'Method not valid' });
     }
 }
 
@@ -77,6 +80,29 @@ const updateEntry = async ( req: NextApiRequest, res: NextApiResponse<Data> ) =>
         res.status(400).json({ message: error.erros.status.message })
     }
 
+}
 
+const deleteEntry = async ( req: NextApiRequest, res: NextApiResponse<Data> ) => {
+
+    const { id } = req.query;
+
+    await db.connect();
+
+    if ( !await Entry.findById( id ) ) {
+        await db.disconnect();
+        return res.status(400).json({ message: `There is no entry with this ID: ${id}`});
+    }
+
+
+    try {
+        await Entry.findByIdAndDelete( id )
+        await db.disconnect();
+        res.status(200).json({ message: 'Entry deleted Sucessfully'});
+
+    } catch (error: any ) {
+        console.log(error)
+        await db.disconnect();
+        res.status(400).json({ message: error.erros.status.message });
+    } 
 
 }

@@ -8,7 +8,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
-        <link rel="icon" type="image/png" href="OpenJira.png" />
+        <link rel="icon" type="image/png" href="/OpenJira.png" />
       </Head>
       <body>
         <Main />
